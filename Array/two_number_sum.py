@@ -7,15 +7,19 @@
 #Sample output: [-1, 11]
 def twoNumberSum(array, targetSum):
     output = []
-    for i in range(len(array)):
-        for j in range(i+1, len(array)):
-            if array[i]+array[j] == targetSum:
-                if array[i]<array[j]:
-                    output.append(array[i])
-                    output.append(array[j])
-                else:
-                    output.append(array[j])
-                    output.append(array[i])
+    array.sort()
+    i = 0
+    n = len(array) - 1
+    while i < n:
+        tsum = array[i] + array[n]
+        if tsum == targetSum:
+            output.append(array[i])
+            output.append(array[n])
+            break #forgot to put break here
+        elif tsum < targetSum:
+            i += 1
+        else:
+            n -= 1
     return output
                 
 
